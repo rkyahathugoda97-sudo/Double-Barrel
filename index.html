@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="bg-black text-white">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Double Barrel | The Art of Taste</title>
-    
+
     <!-- Fonts: Use uncluttered brutalist / editorial fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,108 +32,144 @@
             }
         }
     </script>
-    
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- GSAP & Lenis for Smooth Scroll & Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
 </head>
+
 <body class="font-body overflow-x-hidden cursor-none">
 
     <!-- Custom Cursor -->
-    <div id="cursor" class="fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-brand pointer-events-none z-[9999] mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-200"></div>
+    <div id="cursor"
+        class="fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-brand pointer-events-none z-[9999] mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-200">
+    </div>
 
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 bg-brand z-[9000] flex items-center justify-center overflow-hidden">
         <h1 class="text-dark font-heading text-6xl md:text-9xl uppercase tracking-[0.1em]" id="loader-text">Taste</h1>
-        <div class="absolute inset-0 bg-dark transform scale-y-0 origin-bottom transition-transform duration-1000" id="loader-reveal"></div>
+        <div class="absolute inset-0 bg-dark transform scale-y-0 origin-bottom transition-transform duration-1000"
+            id="loader-reveal"></div>
     </div>
 
     <!-- Minimal Overlay Nav -->
     <nav class="fixed top-0 w-full z-50 p-6 mix-blend-difference">
         <div class="flex justify-between items-center text-offwhite">
             <div class="font-display font-bold text-xl tracking-widest uppercase flex items-center gap-4">
-                <img src="assets/images/logo.jpg" class="w-10 h-10 rounded-full object-cover grayscale invert" alt="Logo">
+                <img src="assets/images/logo.jpg" class="w-10 h-10 rounded-full object-cover grayscale invert"
+                    alt="Logo">
                 <span>DBL BRL</span>
             </div>
-            <button id="menu-toggle" class="font-display font-bold uppercase tracking-widest text-sm hover-target group">
+            <button id="menu-toggle"
+                class="font-display font-bold uppercase tracking-widest text-sm hover-target group">
                 <span class="inline-block relative overflow-hidden h-[20px]">
                     <span class="block transition-transform duration-300 group-hover:-translate-y-full">Menu</span>
-                    <span class="block absolute top-full transition-transform duration-300 group-hover:-translate-y-full text-brand">Menu</span>
+                    <span
+                        class="block absolute top-full transition-transform duration-300 group-hover:-translate-y-full text-brand">Menu</span>
                 </span>
             </button>
         </div>
     </nav>
-    
+
     <!-- Fullscreen Menu Overlay -->
-    <div id="full-menu" class="fixed inset-0 bg-dark z-[100] flex flex-col justify-center items-center pointer-events-none opacity-0">
-        <button id="close-menu" class="absolute top-8 right-8 text-white font-display text-lg uppercase tracking-widest hover-target">Close</button>
+    <div id="full-menu"
+        class="fixed inset-0 bg-dark z-[100] flex flex-col justify-center items-center pointer-events-none opacity-0">
+        <button id="close-menu"
+            class="absolute top-8 right-8 text-white font-display text-lg uppercase tracking-widest hover-target">Close</button>
         <ul class="text-center space-y-6 md:space-y-10">
-            <li><a href="#about" class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">The Story</a></li>
-            <li><a href="#offerings" class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">Offerings</a></li>
-            <li><a href="#gallery" class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">Gallery</a></li>
-            <li><a href="#book" class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">Reservation</a></li>
+            <li><a href="#about"
+                    class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">The
+                    Story</a></li>
+            <li><a href="#offerings"
+                    class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">Offerings</a>
+            </li>
+            <li><a href="#gallery"
+                    class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">Gallery</a>
+            </li>
+            <li><a href="#book"
+                    class="menu-link font-heading text-5xl md:text-8xl text-transparent stroke-text hover:text-brand transition-all hover-target uppercase">Reservation</a>
+            </li>
         </ul>
     </div>
 
     <!-- Main Container -->
     <main id="main-content">
-        
+
         <!-- Hero Section (Avant-Garde Magazine style) -->
         <section class="h-screen relative flex items-center justify-center overflow-hidden bg-dark pt-20">
             <div class="absolute w-[120%] h-[120%] z-0" id="hero-img-wrapper">
-                <img src="assets/images/extracted_image_12.jpeg" onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop'" class="w-full h-full object-cover opacity-40 mix-blend-luminosity">
+                <img src="assets/images/extracted_image_12.jpeg"
+                    onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop'"
+                    class="w-full h-full object-cover opacity-40 mix-blend-luminosity">
             </div>
-            
+
             <div class="z-10 text-center w-full relative">
                 <div class="overflow-hidden mb-[-2vw]">
-                    <h1 class="hero-title font-heading text-[15vw] leading-[0.8] text-offwhite m-0 p-0 uppercase relative">
+                    <h1
+                        class="hero-title font-heading text-[15vw] leading-[0.8] text-offwhite m-0 p-0 uppercase relative">
                         <span class="inline-block translate-y-full" id="t1">Double</span>
                     </h1>
                 </div>
                 <!-- Slanted Image Reveal -->
-                <div class="h-[20vh] md:h-[35vh] w-[80%] md:w-[60%] mx-auto my-4 overflow-hidden mask-slanted relative group hover-target" id="hero-center-img">
-                    <img src="assets/images/extracted_image_2.jpeg" onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop'" class="w-full h-full object-cover transform scale-125 transition-transform duration-[2s] group-hover:scale-100">
+                <div class="h-[20vh] md:h-[35vh] w-[80%] md:w-[60%] mx-auto my-4 overflow-hidden mask-slanted relative group hover-target"
+                    id="hero-center-img">
+                    <img src="assets/images/extracted_image_12.jpeg"
+                        class="w-full h-full object-cover transform scale-125 transition-transform duration-[2s] group-hover:scale-100">
                     <div class="absolute inset-0 bg-brand/20 mix-blend-overlay"></div>
                 </div>
                 <div class="overflow-hidden mt-[-2vw]">
-                    <h1 class="hero-title font-heading text-[15vw] leading-[0.8] text-brand m-0 p-0 uppercase relative z-20 mix-blend-difference">
+                    <h1
+                        class="hero-title font-heading text-[15vw] leading-[0.8] text-brand m-0 p-0 uppercase relative z-20 mix-blend-difference">
                         <span class="inline-block translate-y-full" id="t2">Barrel</span>
                     </h1>
                 </div>
             </div>
-            
-            <div class="absolute bottom-8 left-8 text-offwhite text-xs font-display tracking-[0.2em] uppercase origin-left rotate-[-90deg]">
+
+            <div
+                class="absolute bottom-8 left-8 text-offwhite text-xs font-display tracking-[0.2em] uppercase origin-left rotate-[-90deg]">
                 Est. Sri Lanka
             </div>
         </section>
 
         <!-- The Story / Asymmetric Scroll -->
-        <section id="about" class="relative py-20 md:py-32 bg-dark text-offwhite w-full px-6 md:px-12 border-t border-white/5">
+        <section id="about"
+            class="relative py-20 md:py-32 bg-dark text-offwhite w-full px-6 md:px-12 border-t border-white/5">
             <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between gap-12 lg:gap-24">
                 <div class="w-full md:w-5/12 h-[60vh] md:h-screen md:sticky top-0 flex items-center justify-center">
                     <div class="w-full h-[80%] overflow-hidden bg-dark image-parallax relative rounded-sm">
-                        <img src="assets/images/extracted_image_20.jpeg" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338988a2e8c0?auto=format&fit=crop'" class="w-full h-[130%] object-cover absolute top-[-15%] parallax-layer grayscale transition-all duration-700 hover:grayscale-0" alt="Restaurant Story">
+                        <img src="assets/images/extracted_image_20.jpeg"
+                            onerror="this.src='https://images.unsplash.com/photo-1414235077428-338988a2e8c0?auto=format&fit=crop'"
+                            class="w-full h-[130%] object-cover absolute top-[-15%] parallax-layer grayscale transition-all duration-700 hover:grayscale-0"
+                            alt="Restaurant Story">
                         <!-- Abstract shape overlay -->
-                        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-dark to-transparent mix-blend-multiply"></div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-dark to-transparent mix-blend-multiply">
+                        </div>
                     </div>
                 </div>
-                
+
                 <div class="w-full md:w-6/12 py-10 md:py-[20vh]" id="story-text">
-                    <p class="font-display text-sm tracking-[0.2em] uppercase text-brand mb-6 md:mb-8 font-bold">Tradition Meets Modernity</p>
-                    <h2 class="font-heading text-5xl md:text-6xl lg:text-8xl mb-8 md:mb-12 uppercase leading-[0.9]">Beyond <br> Just Food</h2>
-                    <div class="font-body text-base lg:text-xl font-light text-offwhite/80 space-y-6 md:space-y-8 leading-relaxed max-w-lg">
+                    <p class="font-display text-sm tracking-[0.2em] uppercase text-brand mb-6 md:mb-8 font-bold">
+                        Tradition Meets Modernity</p>
+                    <h2 class="font-heading text-5xl md:text-6xl lg:text-8xl mb-8 md:mb-12 uppercase leading-[0.9]">
+                        Beyond <br> Just Food</h2>
+                    <div
+                        class="font-body text-base lg:text-xl font-light text-offwhite/80 space-y-6 md:space-y-8 leading-relaxed max-w-lg">
                         <p class="reveal-text">
-                            At Double Barrel Restaurant BYOB, we believe that great food brings people together. Founded with a passion for culinary diversity.
+                            At Double Barrel Restaurant BYOB, we believe that great food brings people together. Founded
+                            with a passion for culinary diversity.
                         </p>
                         <p class="reveal-text">
-                            From traditional Sri Lankan dishes to flavorful Chinese stir-fries, fragrant Thai curries, and classic Western favorites, our menu is a celebration of taste.
+                            From traditional Sri Lankan dishes to flavorful Chinese stir-fries, fragrant Thai curries,
+                            and classic Western favorites, our menu is a celebration of taste.
                         </p>
                         <p class="reveal-text">
-                            We don't do typical. Our space is cozy yet fiercely elegant. Our service is attentive, yet naturally relaxed. This is simply where you feel at home.
+                            We don't do typical. Our space is cozy yet fiercely elegant. Our service is attentive, yet
+                            naturally relaxed. This is simply where you feel at home.
                         </p>
                     </div>
                 </div>
@@ -138,29 +177,50 @@
         </section>
 
         <!-- Horizontal Scroll Gallery / Menu Teaser -->
-        <section id="gallery" class="h-screen w-full bg-[#111] flex items-center overflow-hidden relative border-t border-white/5">
+        <section id="gallery"
+            class="h-screen w-full bg-[#111] flex items-center overflow-hidden relative border-t border-white/5">
             <div class="absolute inset-0 opacity-[0.03] pattern-grid pointer-events-none"></div>
             <!-- The Track -->
             <div class="gallery-track flex h-full items-center gap-6 md:gap-10 lg:gap-32 px-6 lg:px-[10vw]">
                 <!-- Title Block inside the scroll -->
                 <div class="shrink-0 w-[80vw] lg:w-[50vw] flex flex-col justify-center">
-                    <h2 class="font-heading text-8xl lg:text-[10vw] uppercase text-transparent stroke-text-gold leading-[0.8] mb-4">Visual</h2>
-                    <h2 class="font-heading text-8xl lg:text-[10vw] uppercase text-offwhite leading-[0.8] mix-blend-difference z-10 -mt-8 ml-10">Taste.</h2>
-                    <p class="font-display tracking-[0.2em] uppercase text-sm mt-8 text-brand">Scroll to explore culinary art</p>
+                    <h2
+                        class="font-heading text-8xl lg:text-[10vw] uppercase text-transparent stroke-text-gold leading-[0.8] mb-4">
+                        Visual</h2>
+                    <h2
+                        class="font-heading text-8xl lg:text-[10vw] uppercase text-offwhite leading-[0.8] mix-blend-difference z-10 -mt-8 ml-10">
+                        Taste.</h2>
+                    <p class="font-display tracking-[0.2em] uppercase text-sm mt-8 text-brand">Scroll to explore
+                        culinary art</p>
                 </div>
-                
+
                 <!-- Gallery Items -->
-                <div class="shrink-0 w-[75vw] lg:w-[30vw] h-[50vh] lg:h-[60vh] relative hover-target group overflow-hidden">
-                    <img src="assets/images/extracted_image_30.jpeg" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop'" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                    <div class="absolute bottom-6 left-6 font-display font-bold uppercase text-xl md:text-2xl text-white mix-blend-difference">Asian Fusion</div>
+                <div
+                    class="shrink-0 w-[75vw] lg:w-[30vw] h-[50vh] lg:h-[60vh] relative hover-target group overflow-hidden">
+                    <img src="assets/images/extracted_image_10.jpeg"
+                        onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop'"
+                        class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-6 left-6 font-display font-bold uppercase text-xl md:text-2xl text-white mix-blend-difference">
+                        Asian Fusion</div>
                 </div>
-                <div class="shrink-0 w-[75vw] lg:w-[40vw] h-[40vh] lg:h-[50vh] relative hover-target group overflow-hidden self-end mb-[5vh] lg:mb-[10vh]">
-                    <img src="assets/images/extracted_image_35.jpeg" onerror="this.src='https://images.unsplash.com/photo-1512152272829-e3139592d56f?auto=format&fit=crop'" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                    <div class="absolute top-6 left-6 font-display font-bold uppercase text-xl md:text-2xl text-white mix-blend-difference">Sri Lankan</div>
+                <div
+                    class="shrink-0 w-[75vw] lg:w-[40vw] h-[40vh] lg:h-[50vh] relative hover-target group overflow-hidden self-end mb-[5vh] lg:mb-[10vh]">
+                    <img src="assets/images/extracted_image_35.jpeg"
+                        onerror="this.src='https://images.unsplash.com/photo-1512152272829-e3139592d56f?auto=format&fit=crop'"
+                        class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    <div
+                        class="absolute top-6 left-6 font-display font-bold uppercase text-xl md:text-2xl text-white mix-blend-difference">
+                        Sri Lankan</div>
                 </div>
-                <div class="shrink-0 w-[75vw] lg:w-[35vw] h-[60vh] lg:h-[70vh] relative hover-target group overflow-hidden self-start mt-[5vh]">
-                    <img src="assets/images/extracted_image_40.jpeg" onerror="this.src='https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop'" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                    <div class="absolute bottom-6 left-6 font-display font-bold uppercase text-xl md:text-2xl text-white mix-blend-difference">Western Classics</div>
+                <div
+                    class="shrink-0 w-[75vw] lg:w-[35vw] h-[60vh] lg:h-[70vh] relative hover-target group overflow-hidden self-start mt-[5vh]">
+                    <img src="assets/images/extracted_image_14.jpeg"
+                        onerror="this.src='https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop'"
+                        class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-6 left-6 font-display font-bold uppercase text-xl md:text-2xl text-white mix-blend-difference">
+                        Western Classics</div>
                 </div>
                 <!-- End padding element -->
                 <div class="shrink-0 w-[20vw]"></div>
@@ -168,31 +228,51 @@
         </section>
 
         <!-- Overlapping Card Offerings -->
-        <section id="offerings" class="py-20 md:py-32 bg-[#0a0a0a] min-h-[150vh] relative px-6 w-full flex flex-col items-center border-t border-white/5">
-            <h2 class="font-heading text-5xl md:text-9xl text-brand text-center uppercase py-20 sticky top-10 pointer-events-none z-0">Our Offerings</h2>
-            
+        <section id="offerings"
+            class="py-20 md:py-32 bg-[#0a0a0a] min-h-[150vh] relative px-6 w-full flex flex-col items-center border-t border-white/5">
+            <h2
+                class="font-heading text-5xl md:text-9xl text-brand text-center uppercase py-20 sticky top-10 pointer-events-none z-0">
+                Our Offerings</h2>
+
             <div class="w-full max-w-[1000px] relative z-10 cards-container">
                 <!-- Card 1 -->
-                <div class="w-full sticky top-[20vh] mb-24 h-auto md:h-[60vh] bg-[#1a1a1a] rounded-xl overflow-hidden flex flex-col md:flex-row shadow-2xl service-card border border-white/5">
+                <div
+                    class="w-full sticky top-[20vh] mb-24 h-auto md:h-[60vh] bg-[#1a1a1a] rounded-xl overflow-hidden flex flex-col md:flex-row shadow-2xl service-card border border-white/5">
                     <div class="w-full md:w-1/2 h-[30vh] md:h-full relative overflow-hidden group">
-                        <img src="assets/images/extracted_image_25.jpeg" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-[1s] group-hover:scale-110">
+                        <img src="assets/images/extracted_image_22.jpeg"
+                            onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop'"
+                            class="w-full h-full object-cover transition-transform duration-[1s] group-hover:scale-110">
                     </div>
-                    <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center text-offwhite hover-target h-auto md:h-full">
-                        <div class="text-brand font-display uppercase tracking-widest text-xs mb-4 border-b border-brand/30 pb-2 inline-block self-start">Experience</div>
-                        <h3 class="font-heading text-3xl md:text-4xl lg:text-5xl uppercase mb-6">Dine-In <br class="hidden md:block"> Culture</h3>
-                        <p class="font-light text-offwhite/70">Immerse yourself in our stylish space. Celebrate your special moments with our impeccable BYOB setup. Perfect environment, unforgettable memories.</p>
+                    <div
+                        class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center text-offwhite hover-target h-auto md:h-full">
+                        <div
+                            class="text-brand font-display uppercase tracking-widest text-xs mb-4 border-b border-brand/30 pb-2 inline-block self-start">
+                            Experience</div>
+                        <h3 class="font-heading text-3xl md:text-4xl lg:text-5xl uppercase mb-6">Dine-In <br
+                                class="hidden md:block"> Culture</h3>
+                        <p class="font-light text-offwhite/70">Immerse yourself in our stylish space. Celebrate your
+                            special moments with our impeccable BYOB setup. Perfect environment, unforgettable memories.
+                        </p>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="w-full sticky top-[25vh] h-auto md:h-[60vh] bg-brand rounded-xl overflow-hidden flex flex-col md:flex-row-reverse shadow-2xl service-card">
+                <div
+                    class="w-full sticky top-[25vh] h-auto md:h-[60vh] bg-brand rounded-xl overflow-hidden flex flex-col md:flex-row-reverse shadow-2xl service-card">
                     <div class="w-full md:w-1/2 h-[30vh] md:h-full relative overflow-hidden group">
-                        <img src="assets/images/extracted_image_10.jpeg" onerror="this.src='https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-[1s] group-hover:scale-110">
+                        <img src="assets/images/extracted_image_44.jpeg"
+                            onerror="this.src='https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop'"
+                            class="w-full h-full object-cover transition-transform duration-[1s] group-hover:scale-110">
                     </div>
-                    <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center text-dark hover-target h-auto md:h-full">
-                        <div class="text-dark font-display uppercase tracking-widest text-xs mb-4 border-b border-dark/30 pb-2 inline-block self-start">Anywhere</div>
-                        <h3 class="font-heading text-3xl md:text-4xl lg:text-5xl uppercase mb-6">Takeaway <br class="hidden md:block"> & Delivery</h3>
-                        <p class="font-body text-dark/80">World-class flavors directly to your home. Fast, fresh, and wrapped with the same elegance you'd expect from our kitchen.</p>
+                    <div
+                        class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center text-dark hover-target h-auto md:h-full">
+                        <div
+                            class="text-dark font-display uppercase tracking-widest text-xs mb-4 border-b border-dark/30 pb-2 inline-block self-start">
+                            Anywhere</div>
+                        <h3 class="font-heading text-3xl md:text-4xl lg:text-5xl uppercase mb-6">Takeaway <br
+                                class="hidden md:block"> & Delivery</h3>
+                        <p class="font-body text-dark/80">World-class flavors directly to your home. Fast, fresh, and
+                            wrapped with the same elegance you'd expect from our kitchen.</p>
                     </div>
                 </div>
             </div>
@@ -201,16 +281,22 @@
         <!-- Big Footer / Reservation -->
         <section id="book" class="relative min-h-screen bg-dark flex flex-col justify-between overflow-hidden">
             <!-- Background element -->
-            <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden">
-                <img src="assets/images/logo.jpg" class="w-[150vw] h-auto grayscale invert blur-sm object-cover opacity-50">
+            <div
+                class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden">
+                <img src="assets/images/logo.jpg"
+                    class="w-[150vw] h-auto grayscale invert blur-sm object-cover opacity-50">
             </div>
-            
-            <div class="pt-32 px-6 md:px-12 flex-grow flex flex-col items-center justify-center relative z-10 w-full max-w-7xl mx-auto">
+
+            <div
+                class="pt-32 px-6 md:px-12 flex-grow flex flex-col items-center justify-center relative z-10 w-full max-w-7xl mx-auto">
                 <p class="font-display uppercase tracking-[0.3em] text-brand mb-6 text-sm">Join the Experience</p>
                 <!-- HUGE Text -->
-                <h2 class="font-heading text-[12vw] text-offwhite leading-[0.8] mb-12 hover-target transition-all duration-300 hover:text-brand text-center uppercase break-words w-full">Reserve.</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 w-full mt-10 border-t border-white/10 pt-16">
+                <h2
+                    class="font-heading text-[12vw] text-offwhite leading-[0.8] mb-12 hover-target transition-all duration-300 hover:text-brand text-center uppercase break-words w-full">
+                    Reserve.</h2>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 w-full mt-10 border-t border-white/10 pt-16">
                     <div>
                         <h4 class="font-display font-bold uppercase text-2xl mb-8">Details</h4>
                         <ul class="space-y-6 font-body text-offwhite/60 font-light">
@@ -218,48 +304,69 @@
                                 <span class="text-brand w-6 pt-1"><i class="fa-solid fa-location-dot"></i></span>
                                 First Floor, No:50, Moraketiya Road,<br>Embilipitiya
                             </li>
-                            <li class="flex items-start gap-4 hover-target hover:text-white transition-colors cursor-pointer">
+                            <li
+                                class="flex items-start gap-4 hover-target hover:text-white transition-colors cursor-pointer">
                                 <span class="text-brand w-6 pt-1"><i class="fa-solid fa-phone"></i></span>
                                 +94 117123766<br>+94 777123766
                             </li>
-                            <li class="flex items-start gap-4 hover-target hover:text-white transition-colors cursor-pointer">
+                            <li
+                                class="flex items-start gap-4 hover-target hover:text-white transition-colors cursor-pointer">
                                 <span class="text-brand w-6 pt-1"><i class="fa-solid fa-envelope"></i></span>
                                 info@doublebarrelrestaurant.lk
                             </li>
                         </ul>
-                        
+
                         <div class="flex gap-6 mt-12">
-                            <a href="#" class="text-offwhite/60 hover:text-brand transition-colors text-xl hover-target"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#" class="text-offwhite/60 hover:text-brand transition-colors text-xl hover-target"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#" class="text-offwhite/60 hover:text-brand transition-colors text-xl hover-target"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"
+                                class="text-offwhite/60 hover:text-brand transition-colors text-xl hover-target"><i
+                                    class="fa-brands fa-facebook"></i></a>
+                            <a href="#"
+                                class="text-offwhite/60 hover:text-brand transition-colors text-xl hover-target"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="#"
+                                class="text-offwhite/60 hover:text-brand transition-colors text-xl hover-target"><i
+                                    class="fa-brands fa-tiktok"></i></a>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-8">
                         <div class="border-b border-white/20 pb-2 relative group hover-target">
-                            <input type="text" placeholder="Name" class="bg-transparent border-none w-full text-offwhite text-xl font-body outline-none placeholder:text-white/20">
-                            <div class="absolute bottom-0 left-0 h-[1px] w-0 bg-brand transition-all duration-500 group-hover:w-full"></div>
+                            <input type="text" placeholder="Name"
+                                class="bg-transparent border-none w-full text-offwhite text-xl font-body outline-none placeholder:text-white/20">
+                            <div
+                                class="absolute bottom-0 left-0 h-[1px] w-0 bg-brand transition-all duration-500 group-hover:w-full">
+                            </div>
                         </div>
                         <div class="border-b border-white/20 pb-2 relative group hover-target">
-                            <input type="text" placeholder="Phone / Email" class="bg-transparent border-none w-full text-offwhite text-xl font-body outline-none placeholder:text-white/20">
-                            <div class="absolute bottom-0 left-0 h-[1px] w-0 bg-brand transition-all duration-500 group-hover:w-full"></div>
+                            <input type="text" placeholder="Phone / Email"
+                                class="bg-transparent border-none w-full text-offwhite text-xl font-body outline-none placeholder:text-white/20">
+                            <div
+                                class="absolute bottom-0 left-0 h-[1px] w-0 bg-brand transition-all duration-500 group-hover:w-full">
+                            </div>
                         </div>
                         <div class="border-b border-white/20 pb-2 relative group hover-target">
-                            <input type="text" placeholder="Date & Guests" class="bg-transparent border-none w-full text-offwhite text-xl font-body outline-none placeholder:text-white/20">
-                            <div class="absolute bottom-0 left-0 h-[1px] w-0 bg-brand transition-all duration-500 group-hover:w-full"></div>
+                            <input type="text" placeholder="Date & Guests"
+                                class="bg-transparent border-none w-full text-offwhite text-xl font-body outline-none placeholder:text-white/20">
+                            <div
+                                class="absolute bottom-0 left-0 h-[1px] w-0 bg-brand transition-all duration-500 group-hover:w-full">
+                            </div>
                         </div>
-                        <button class="font-display font-bold uppercase tracking-widest text-dark bg-brand px-10 py-5 mt-4 hover-target w-full hover:bg-white transition-colors duration-300">Submit Request</button>
+                        <button
+                            class="font-display font-bold uppercase tracking-widest text-dark bg-brand px-10 py-5 mt-4 hover-target w-full hover:bg-white transition-colors duration-300">Submit
+                            Request</button>
                     </div>
                 </div>
             </div>
-            
-            <div class="w-full text-center py-6 text-white/30 font-display text-xs tracking-widest uppercase border-t border-white/5 mt-20">
+
+            <div
+                class="w-full text-center py-6 text-white/30 font-display text-xs tracking-widest uppercase border-t border-white/5 mt-20">
                 &copy; 2026 Double Barrel | Designed Creatively
             </div>
         </section>
-        
+
     </main>
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
